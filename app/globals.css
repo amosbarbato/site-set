@@ -38,6 +38,7 @@
   --color-cyan-300: var(--cyan-300);
   --font-inter: var(--font-inter-sans);
   --font-sans: var(--font-pt-sans);
+  --color-background: var(--color-gray-700);
 }
 
 body {
