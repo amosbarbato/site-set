@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, PT_Sans_Caption } from "next/font/google";
 import "./globals.css";
+import Layout from "@/components/layout";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -28,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${interSans.variable} ${ptSansCaption.variable} antialiased`}
       >
-        {children}
+        <Layout>{children}</Layout>
       </body>
     </html>
   );
