@@ -2,8 +2,8 @@ import FeatureItem from "../components/feature-card";
 
 export default function FeatureSection() {
   return (
-    <section className="padding-container relative">
-      <div className="flex flex-col gap-6 md:grid md:grid-cols-2">
+    <section className="padding-container relative pt-10 pb-[72px] md:pt-20 md:pb-[120px]">
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-6">
         <FeatureItem
           tag="Simples"
           label="Crie um catálogo de produtos online em poucos minutos"

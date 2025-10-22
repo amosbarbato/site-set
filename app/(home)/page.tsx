@@ -5,7 +5,7 @@ import CustomerStorySection from "./sections/customer-story";
 
 export default function Home() {
   return (
-    <article className="flex flex-col gap-10 md:gap-20">
+    <article>
       <HeroSection />
       <FeatureSection />
       <SupportSection />

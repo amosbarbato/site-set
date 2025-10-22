@@ -23,8 +23,8 @@ const customerStories = [
 
 export default function CustomerStorySection() {
   return (
-    <section className="padding-container relative">
-      <div className="flex flex-col items-center gap-8 py-12 md:gap-12 md:py-[120px]">
+    <section className="padding-container relative py-20 md:pt-32 md:pb-[168px]">
+      <div className="flex flex-col items-center gap-8">
         <h2 className="heading-xl text-center font-sans text-gray-100">
           Quem utiliza, aprova!
         </h2>

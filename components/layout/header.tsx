@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <header className="fiixed bg-background/95 supports-backdrop-filters:bg-background/60 top-0 z-50 w-full border-b border-white/10 backdrop-blur">
       <div className="padding-container">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 items-center justify-between md:h-24">
           <Logo />
 
           <nav className="hidden items-center gap-6 md:flex">

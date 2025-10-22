@@ -35,7 +35,7 @@ export default function SupportSection() {
           Sua loja de afiliados, simples, do jeito que deveria ser
         </h2>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3 md:gap-6">
           {support.map((item, index) => (
             <SupportCard key={index} {...item} />
           ))}
