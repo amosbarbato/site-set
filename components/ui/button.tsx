@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import { cva, cx, type VariantProps } from "class-variance-authority";
 
 export const buttonVariants = cva(
-  "flex items-center justify-center font-medium text-sm rounded-full cursor-pointer transition-colors duration-300",
+  "flex items-center gap-2 justify-center font-medium text-sm rounded-full cursor-pointer transition-colors duration-300",
   {
     variants: {
       variant: {
