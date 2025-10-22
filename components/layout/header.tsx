@@ -6,7 +6,7 @@ import NavbarMobile from "./navbar-mobile";
 export default function Header() {
   return (
     <header className="fiixed bg-background/95 supports-backdrop-filters:bg-background/60 top-0 z-50 w-full border-b border-white/10 backdrop-blur">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="padding-container">
         <div className="flex h-16 items-center justify-between">
           <Logo />
 
