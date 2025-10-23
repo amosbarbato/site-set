@@ -19,6 +19,8 @@ import {
   AvatarTitle,
 } from "@/components/avatar";
 import Markdown from "@/components/markdown";
+import Button from "@/components/ui/button";
+import { useShare } from "@/hooks/use-share";
 
 export default function PostPage() {
   const pathname = usePathname();
@@ -28,6 +30,13 @@ export default function PostPage() {
     (post) => post.slug.toLowerCase() === slug.toLowerCase(),
   )!;
   const publishedDate = new Date(post?.date).toLocaleDateString("pt-BR");
+
+  const postUrl = `https://site.set/blog/${slug}`;
+  const { shareButtons } = useShare({
+    url: postUrl,
+    title: post.title,
+    text: post.description,
+  });
 
   if (!post) {
     return (
@@ -87,7 +96,24 @@ export default function PostPage() {
             <Markdown content={post.body.raw} />
           </div>
         </article>
-        <aside className="col-span-1"></aside>
+        <aside className="col-span-1 space-y-5">
+          <h2 className="heading-xs font-sans">Compartilhar</h2>
+
+          <div className="space-y-2">
+            {shareButtons.map((provider) => (
+              <Button
+                key={provider.provider}
+                onClick={() => provider.action()}
+                variant="outline"
+                size="lg"
+                className="w-full justify-start"
+              >
+                {provider.icon}
+                {provider.name}
+              </Button>
+            ))}
+          </div>
+        </aside>
       </div>
     </main>
   );
