@@ -8,8 +8,8 @@ import {
   type ChangeEvent,
   type FormEvent,
 } from "react";
-import { CircleX, SearchIcon } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { CircleX, SearchIcon } from "lucide-react";
 
 export default function Search() {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -17,11 +17,12 @@ export default function Search() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const [query, setQuery] = useState(searchParams.get("q") || "");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
-    setQuery(searchParams.get("q") || "");
-  }, [searchParams]);
+    const current = searchParams.get("q") || "";
+    setQuery(current);
+  }, [pathname]);
 
   const handleSearch = useCallback(
     (e: FormEvent) => {

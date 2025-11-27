@@ -1,7 +1,10 @@
+"use client";
+
 import Search from "@/components/search";
 import Badge from "@/components/ui/badge";
 import PostCard from "./components/post-card";
 import { allPosts } from "contentlayer/generated";
+import { Suspense } from "react";
 
 export default function Blog() {
   const sortedPosts = allPosts.sort(
@@ -21,7 +24,9 @@ export default function Blog() {
           </div>
 
           <div className="flex justify-end">
-            <Search />
+            <Suspense fallback={null}>
+              <Search />
+            </Suspense>
           </div>
         </div>
 
