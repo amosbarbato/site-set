@@ -21,6 +21,7 @@ import {
 import Markdown from "@/components/markdown";
 import Button from "@/components/ui/button";
 import { useShare } from "@/hooks/use-share";
+import PostShare from "@/components/post-share";
 
 export default function PostPage() {
   const pathname = usePathname();
@@ -62,9 +63,9 @@ export default function PostPage() {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-y-6 md:grid-cols-4 md:gap-5">
         <article className="col-span-3 rounded-xl border border-gray-400 bg-gray-600">
-          <figure className="relative h-[264px] w-full overflow-hidden rounded-lg">
+          <figure className="relative h-[264px] w-full overflow-hidden rounded-t-lg">
             <Image
               src={post?.image ?? ""}
               alt={post?.title ?? ""}
@@ -96,24 +97,12 @@ export default function PostPage() {
             <Markdown content={post.body.raw} />
           </div>
         </article>
-        <aside className="col-span-1 space-y-5">
-          <h2 className="heading-xs font-sans">Compartilhar</h2>
 
-          <div className="space-y-2">
-            {shareButtons.map((provider) => (
-              <Button
-                key={provider.provider}
-                onClick={() => provider.action()}
-                variant="outline"
-                size="lg"
-                className="w-full justify-start"
-              >
-                {provider.icon}
-                {provider.name}
-              </Button>
-            ))}
-          </div>
-        </aside>
+        <PostShare
+          url={postUrl}
+          title={post?.title}
+          description={post?.description}
+        />
       </div>
     </main>
   );

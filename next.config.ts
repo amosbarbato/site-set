@@ -4,7 +4,7 @@ import { withContentlayer } from "next-contentlayer";
 const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: false,
 };
 
 export default withContentlayer(nextConfig);
