@@ -36,7 +36,12 @@ export default function PostCard({
           </p>
         </div>
         <div className="flex items-center gap-2 border-t border-gray-400 pt-3">
-          <Image src={author.avatar} width={24} height={24} alt={author.name} />
+          <Image
+            src={author.avatar.trim()}
+            width={24}
+            height={24}
+            alt={author.name}
+          />
           <span className="body-xs text-gray-300">{author.name}</span>
         </div>
       </div>

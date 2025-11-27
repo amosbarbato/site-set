@@ -83,7 +83,7 @@ export default async function PostPage({ params }: BlogPostPage) {
               <h1 className="heading-xl font-sans">{post?.title}</h1>
               <AvatarContainer>
                 <AvatarImage
-                  src={post?.author.avatar}
+                  src={post?.author.avatar.trim()}
                   alt={post?.author.name}
                 />
 
