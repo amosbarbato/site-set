@@ -1,7 +1,7 @@
 import Search from "@/components/search";
 import Badge from "@/components/ui/badge";
-import PostCard from "./components/post-card";
 import { allPosts } from "@/.contentlayer/generated";
+import PostCard from "./components/post-card";
 
 export default function Blog() {
   const posts = allPosts;

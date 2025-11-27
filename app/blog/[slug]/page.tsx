@@ -1,7 +1,10 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 import { allPosts } from "@/.contentlayer/generated";
+import { useShare } from "@/hooks/use-share";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,8 +12,6 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import Link from "next/link";
-import Image from "next/image";
 import {
   AvatarContainer,
   AvatarContent,
@@ -19,8 +20,6 @@ import {
   AvatarTitle,
 } from "@/components/avatar";
 import Markdown from "@/components/markdown";
-import Button from "@/components/ui/button";
-import { useShare } from "@/hooks/use-share";
 import PostShare from "@/components/post-share";
 
 export default function PostPage() {
