@@ -4,7 +4,9 @@ import { allPosts } from "@/.contentlayer/generated";
 import PostCard from "./components/post-card";
 
 export default function Blog() {
-  const posts = allPosts;
+  const sortedPosts = allPosts.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
 
   return (
     <article>
@@ -25,7 +27,7 @@ export default function Blog() {
 
         {/* list */}
         <div className="grid gap-4 md:grid-cols-3 md:gap-6">
-          {posts.map((post) => (
+          {sortedPosts.map((post) => (
             <PostCard
               key={post._id}
               title={post.title}

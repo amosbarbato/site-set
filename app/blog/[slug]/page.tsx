@@ -1,10 +1,6 @@
-"use client";
-
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { allPosts } from "@/.contentlayer/generated";
-import { useShare } from "@/hooks/use-share";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -22,9 +18,22 @@ import {
 import Markdown from "@/components/markdown";
 import PostShare from "@/components/post-share";
 
-export default function PostPage() {
-  const pathname = usePathname();
-  const slug = pathname.split("/").pop() ?? "";
+type BlogPostPage = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  return allPosts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export default async function PostPage({ params }: BlogPostPage) {
+  const { slug } = await params;
 
   const post = allPosts.find(
     (post) => post.slug.toLowerCase() === slug.toLowerCase(),
@@ -32,11 +41,6 @@ export default function PostPage() {
   const publishedDate = new Date(post?.date).toLocaleDateString("pt-BR");
 
   const postUrl = `https://site.set/blog/${slug}`;
-  const { shareButtons } = useShare({
-    url: postUrl,
-    title: post.title,
-    text: post.description,
-  });
 
   if (!post) {
     return (
