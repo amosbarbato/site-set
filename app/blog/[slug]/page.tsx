@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { allPosts } from "@/.contentlayer/generated";
+import { allPosts } from "contentlayer/generated";
 import {
   Breadcrumb,
   BreadcrumbItem,
