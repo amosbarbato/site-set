@@ -1,10 +1,33 @@
 "use client";
 
+import { Suspense } from "react";
+import type { Metadata } from "next";
+import { allPosts } from "contentlayer/generated";
 import Search from "@/components/search";
 import Badge from "@/components/ui/badge";
 import PostCard from "./components/post-card";
-import { allPosts } from "contentlayer/generated";
-import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Dicas e estratégias para impulsionar seu negócio",
+  robots: "index, follow",
+  openGraph: {
+    title: "Blog",
+    description: "Dicas e estratégias para impulsionar seu negócio",
+    url: "https://nextjs-fundamentos.vercel.app/og-image.jpg",
+    siteName: "Site.Set",
+    locale: "pt-BR",
+    type: "website",
+    images: [
+      {
+        url: "https://nextjs-fundamentos.vercel.app/og-image.jpg",
+        width: 800,
+        height: 600,
+        alt: "Site.Set",
+      },
+    ],
+  },
+};
 
 export default function Blog() {
   const sortedPosts = allPosts.sort(

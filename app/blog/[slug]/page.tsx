@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { allPosts } from "contentlayer/generated";
@@ -18,11 +19,32 @@ import {
 import Markdown from "@/components/markdown";
 import PostShare from "@/components/post-share";
 
-type BlogPostPage = {
+type BlogPostPageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = allPosts.find((post) => post.slug === slug);
+
+  if (!post) {
+    return {};
+  }
+
+  return {
+    title: post.title,
+    description: post.description,
+    authors: [{ name: post.author.name }],
+    robots: "index, follow",
+    openGraph: {
+      images: [post.image],
+    },
+  };
+}
 
 export const revalidate = 60;
 
@@ -32,7 +54,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function PostPage({ params }: BlogPostPage) {
+export default async function PostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
 
   const post = allPosts.find(
